@@ -122,21 +122,20 @@
 
   /* REVEAL ANIMATIONS */
   .reveal {
-  opacity: 0;
-  transform: translateY(40px) scale(0.98);
-  filter: blur(6px);
-  transition:
-    opacity 0.8s cubic-bezier(0.22,1,0.36,1),
-    transform 0.8s cubic-bezier(0.22,1,0.36,1),
-    filter 0.8s ease;
-}
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(6px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22,1,0.36,1),
+      transform 0.8s cubic-bezier(0.22,1,0.36,1),
+      filter 0.8s ease;
+  }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
@@ -566,7 +565,7 @@
     gap: 0.6rem;
   }
   .timeline-desc li::before {
-    content: '—';
+    content: '/';
     color: var(--accent);
     flex-shrink: 0;
     font-size: 0.75rem;
@@ -805,7 +804,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">  
+<section id="hero">
   <div class="reveal">
     <p class="hero-eyebrow">Computer Science · B.Tech 2024–2028</p>
   </div>
@@ -819,20 +818,19 @@
     <a href="#projects" class="btn-primary">View Work</a>
   </div>
   <div class="hero-socials reveal reveal-delay-4">
-  <a href="https://linkedin.com/" target="_blank" rel="noopener">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-    LinkedIn
-  </a>
-
-  <a href="https://github.com/" target="_blank" rel="noopener">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77"/></svg>
-    GitHub
-  </a>
-
-  <a href="https://leetcode.com/u/madhurima_yakkala/" target="_blank" rel="noopener">
-    LeetCode
-  </a>
-</div>
+    <a href="https://www.linkedin.com/in/madhurima-yakkala" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.44 5.44 0 0 0 16 3c-1.1 0-2.18.27-3.14.75A5.44 5.44 0 0 0 9 3a5.44 5.44 0 0 0-4 1.77 5.44 5.44 0 0 0-1.44 3.35C3.56 9.77 3 11 3 12.5c0 5.46 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 22.13V22"/></svg>
+      GitHub
+    </a>
+    <a href="https://leetcode.com/u/madhurima_yakkala/" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      LeetCode
+    </a>
+  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -841,27 +839,27 @@
 <section id="about">
   <div class="reveal">
     <div class="section-label">About</div>
-   <h2 class="section-title">Curious by nature. Learning by doing.</h2>
-</div>
-<div class="about-grid">
-  <div class="about-text reveal reveal-delay-1">
-    <p>
-      I'm a second-year Computer Science student at <strong>RV Institute of Technology, Guntur</strong>. I enjoy working on practical problems where what I build actually makes sense to the person using it.
-    </p>
-    <p>
-      I’ve worked with Python, Java, and web technologies like HTML, CSS, and JavaScript. I try to keep my code simple, clean, and easy to understand.
-    </p>
-    <p>
-  Outside academics, I build small projects and contribute to my college’s Social Media Club. I’m cur---rently looking for an internship where I can learn faster and work on real-world problems.
-</p>
-<p>
-  I also regularly practice problem-solving on LeetCode and have solved 100+ problems so far, focusing on strengthening my fundamentals in data structures and algorithms.
-</p>
+    <h2 class="section-title">Curious by nature. Learning by doing.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal reveal-delay-1">
+      <p>
+        I'm a second-year Computer Science student at <strong>RV Institute of Technology, Guntur</strong>. I enjoy working on practical problems where what I build actually makes sense to the person using it.
+      </p>
+      <p>
+        I've worked with Python, Java, and web technologies like HTML, CSS, and JavaScript. I try to keep my code simple, clean, and easy to understand.
+      </p>
+      <p>
+        Outside academics, I build small projects and contribute to my college's Social Media Club. I'm currently looking for an internship where I can learn faster and work on real-world problems.
+      </p>
+      <p>
+        I also regularly practice problem-solving on <a href="https://leetcode.com/u/madhurima_yakkala/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">LeetCode</a> and have solved 100+ problems so far, focusing on strengthening my fundamentals in data structures and algorithms.
+      </p>
     </div>
     <div class="about-stats reveal reveal-delay-2">
       <div class="stat-item">
         <div class="stat-num">4<span>+</span></div>
-        <div class="stat-label">Languages & frameworks</div>
+        <div class="stat-label">Languages and frameworks</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">2024</div>
@@ -951,13 +949,9 @@
         <span class="stack-tag">UX</span>
       </div>
       <div class="project-links">
-        <a href="#" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77"/></svg>
+        <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.44 5.44 0 0 0 16 3c-1.1 0-2.18.27-3.14.75A5.44 5.44 0 0 0 9 3a5.44 5.44 0 0 0-4 1.77 5.44 5.44 0 0 0-1.44 3.35C3.56 9.77 3 11 3 12.5c0 5.46 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 22.13V22"/></svg>
           GitHub
-        </a>
-        <a href="#" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Demo
         </a>
       </div>
     </div>
@@ -965,7 +959,7 @@
       <div class="project-num">02</div>
       <div class="project-title">Expense Tracker</div>
       <p class="project-desc">
-        A clean web app to log and categorize daily spending. Built from scratch with vanilla HTML, CSS, and JavaScript — focused on simplicity and usability, because personal finance tools shouldn't be complicated.
+        A clean web app to log and categorize daily spending. Built from scratch with vanilla HTML, CSS, and JavaScript, focused on simplicity and usability, because personal finance tools should not be complicated.
       </p>
       <div class="project-stack">
         <span class="stack-tag">HTML5</span>
@@ -973,13 +967,9 @@
         <span class="stack-tag">JavaScript</span>
       </div>
       <div class="project-links">
-        <a href="#" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77"/></svg>
+        <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.44 5.44 0 0 0 16 3c-1.1 0-2.18.27-3.14.75A5.44 5.44 0 0 0 9 3a5.44 5.44 0 0 0-4 1.77 5.44 5.44 0 0 0-1.44 3.35C3.56 9.77 3 11 3 12.5c0 5.46 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 22.13V22"/></svg>
           GitHub
-        </a>
-        <a href="#" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Live Demo
         </a>
       </div>
     </div>
@@ -987,7 +977,7 @@
       <div class="project-num">03</div>
       <div class="project-title">Customer Segmentation</div>
       <p class="project-desc">
-        A group project applying K-Means clustering in Python to identify distinct customer groups from raw data. Included data visualization and cluster evaluation — turning numbers into decisions a business can act on.
+        A group project applying K-Means clustering in Python to identify distinct customer groups from raw data. Included data visualization and cluster evaluation, turning numbers into decisions a business can act on.
       </p>
       <div class="project-stack">
         <span class="stack-tag">Python</span>
@@ -996,8 +986,8 @@
         <span class="stack-tag">ML</span>
       </div>
       <div class="project-links">
-        <a href="#" target="_blank">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77"/></svg>
+        <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.44 5.44 0 0 0 16 3c-1.1 0-2.18.27-3.14.75A5.44 5.44 0 0 0 9 3a5.44 5.44 0 0 0-4 1.77 5.44 5.44 0 0 0-1.44 3.35C3.56 9.77 3 11 3 12.5c0 5.46 3.3 6.65 6.44 7A3.37 3.37 0 0 0 9 22.13V22"/></svg>
           GitHub
         </a>
       </div>
@@ -1082,14 +1072,27 @@
   </p>
   <div class="contact-links reveal reveal-delay-3">
     <a href="mailto:yakkalamadhurima@gmail.com" class="btn-primary">Say Hello</a>
-    <a href="https://linkedin.com/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
-    <a href="https://github.com/" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+    <a href="https://www.linkedin.com/in/madhurima-yakkala" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+    <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+    <a href="https://leetcode.com/u/madhurima_yakkala/" target="_blank" rel="noopener" class="btn-ghost">LeetCode</a>
   </div>
   <div class="contact-info reveal reveal-delay-4">
     <div class="contact-info-item">
       <span class="contact-info-label">Email</span>
       <span class="contact-info-value">
         <a href="mailto:yakkalamadhurima@gmail.com">yakkalamadhurima@gmail.com</a>
+      </span>
+    </div>
+    <div class="contact-info-item">
+      <span class="contact-info-label">LinkedIn</span>
+      <span class="contact-info-value">
+        <a href="https://www.linkedin.com/in/madhurima-yakkala" target="_blank" rel="noopener">madhurima-yakkala</a>
+      </span>
+    </div>
+    <div class="contact-info-item">
+      <span class="contact-info-label">GitHub</span>
+      <span class="contact-info-value">
+        <a href="https://github.com/madhurimayakkala" target="_blank" rel="noopener">madhurimayakkala</a>
       </span>
     </div>
   </div>
@@ -1136,15 +1139,12 @@ window.addEventListener('scroll', () => {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-
       const items = entry.target.querySelectorAll('.reveal');
-
       items.forEach((el, index) => {
         setTimeout(() => {
           el.classList.add('visible');
         }, index * 90);
       });
-
       observer.unobserve(entry.target);
     }
   });
