@@ -1,77 +1,77 @@
 # 🌐 Portfolio Website
 
-Personal portfolio website built to showcase my projects, skills, and experience as a Computer Science student.
+Personal developer portfolio built to showcase projects, technical skills, and practical software engineering work.
 
 ## Overview
 
-This is a minimal, responsive portfolio focused on clarity and usability.
-It presents my work without unnecessary complexity and keeps the experience smooth across devices.
+This portfolio highlights my work as a Computer Science student focused on full-stack development and problem solving through hands-on projects.
+
+The site was built with a strong focus on:
+- clean UI
+- responsive design
+- smooth interactions
+- recruiter-friendly project presentation
+- lightweight performance using vanilla JavaScript
 
 ## Features
 
-* Smooth scrolling navigation
-* Active section highlighting on scroll
-* Scroll progress bar
-* Reveal animations on scroll
-* Responsive layout for mobile and desktop
-* Custom cursor interaction on desktop
+- Smooth scrolling navigation
+- Active section highlighting
+- Scroll progress indicator
+- Reveal-on-scroll animations
+- Responsive mobile-first layout
+- Custom cursor interactions
+- Minimal dark-themed UI
 
 ## Tech Stack
 
-* HTML5
-* CSS3
-* JavaScript (vanilla)
-
-No frameworks used.
+- HTML5
+- CSS3
+- JavaScript (Vanilla)
 
 ## Sections
 
-* Hero
-* About
-* Skills
-* Projects
-* Experience
-* Education
-* Contact
+- Hero
+- About
+- Skills
+- Projects
+- Experience
+- Education
+- Contact
 
-## Projects Included
+## Featured Projects
 
-* Plantify
-* Expense Tracker
-* Customer Segmentation (K-Means, Python)
+### ATS Resume Matcher
+Resume screening tool that parses PDF resumes and scores keyword overlap against job descriptions using deterministic matching logic.
 
-## How to Run
+### Customer Segmentation
+K-Means clustering project built in Python for identifying customer groups through data analysis and visualization.
 
-1. Clone the repo
+### Expense Tracker
+Responsive expense management application built with vanilla JavaScript for transaction tracking and spending insights.
 
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   ```
+### Plantify
+Habit tracking application with plant-based visual progress mechanics and streak tracking.
 
-2. Open the folder
+## Run Locally
 
-   ```bash
-   cd your-repo-name
-   ```
+Clone the repository:
 
-3. Run
-   Open `index.html` in your browser
+```bash
+git clone https://github.com/madhurimayakkala/portfolio.git
 
-## Deployment
+Open the project folder:
 
-This project is deployed using Vercel.
+cd portfolio
 
-You can deploy your own version:
+Run locally by opening:
 
-1. Push the project to GitHub
-2. Go to https://vercel.com
-3. Import your repository
-4. Deploy
+index.html
+Deployment
 
-## Contact
+Deployed using Vercel.
 
-Email: [yakkalamadhurima@gmail.com](mailto:yakkalamadhurima@gmail.com)
-
-## Note
-
-Built with a focus on clean structure, readable code, and simple interactions.
+Contact
+Email: yakkalamadhurima@gmail.com
+LinkedIn: https://www.linkedin.com/in/madhurima-yakkala
+GitHub: https://github.com/madhurimayakkala
