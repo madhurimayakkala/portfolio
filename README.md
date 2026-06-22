@@ -1,77 +1,72 @@
-# 🌐 Portfolio Website
+# 🌐 Madhurima Yakkala — Portfolio
 
-Personal developer portfolio built to showcase projects, technical skills, and practical software engineering work.
+Personal portfolio showcasing full-stack projects, client work, and software development experience.
 
-## Overview
+## About
 
-This portfolio highlights my work as a Computer Science student focused on full-stack development and problem solving through hands-on projects.
+This portfolio serves as a central hub for my projects, technical skills, and development journey as a Computer Science student. It highlights both personal projects and real-world client work, with a focus on building practical, user-focused web applications.
 
-The site was built with a strong focus on:
-- clean UI
-- responsive design
-- smooth interactions
-- recruiter-friendly project presentation
-- lightweight performance using vanilla JavaScript
+## Highlights
 
-## Features
-
-- Smooth scrolling navigation
-- Active section highlighting
-- Scroll progress indicator
-- Reveal-on-scroll animations
-- Responsive mobile-first layout
-- Custom cursor interactions
-- Minimal dark-themed UI
+* Responsive design across devices
+* Smooth scrolling and scroll-based animations
+* Interactive project showcases
+* Recruiter-friendly project documentation
+* Performance-focused vanilla JavaScript implementation
+* Accessible navigation and UI patterns
 
 ## Tech Stack
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla)
+* HTML5
+* CSS3
+* JavaScript (Vanilla)
 
 ## Sections
 
-- Hero
-- About
-- Skills
-- Projects
-- Experience
-- Education
-- Contact
+* Home
+* About
+* Skills
+* Projects
+* Client Work
+* Education
+* Contact
 
 ## Featured Projects
 
 ### ATS Resume Matcher
-Resume screening tool that parses PDF resumes and scores keyword overlap against job descriptions using deterministic matching logic.
 
-### Customer Segmentation
-K-Means clustering project built in Python for identifying customer groups through data analysis and visualization.
+A full-stack ATS scoring tool that analyzes resumes against job descriptions using deterministic skill extraction, weighted scoring logic, and skill-gap analysis.
 
-### Expense Tracker
-Responsive expense management application built with vanilla JavaScript for transaction tracking and spending insights.
+**Tech:** Next.js, TypeScript, Tailwind CSS, PDF Parsing
 
 ### Plantify
-Habit tracking application with plant-based visual progress mechanics and streak tracking.
 
-## Run Locally
+A habit and goal tracking application that visualizes progress through plant growth mechanics, streak tracking, authentication, and persistent user data.
 
-Clone the repository:
+**Tech:** Next.js, TypeScript, Clerk, Supabase, Tailwind CSS
 
-```bash
-git clone https://github.com/madhurimayakkala/portfolio.git
+### Expense Tracker
 
-Open the project folder:
+A responsive expense management application that enables users to track transactions, monitor spending patterns, and manage personal finances through an intuitive interface.
 
-cd portfolio
+**Tech:** HTML, CSS, JavaScript
 
-Run locally by opening:
+### Client Projects
 
-index.html
-Deployment
+### Benz Fitness Club
 
-Deployed using Vercel.
+Designed and developed a modern landing page for a fitness academy focused on lead generation, service presentation, and responsive user experience.
 
-Contact
-Email: yakkalamadhurima@gmail.com
-LinkedIn: https://www.linkedin.com/in/madhurima-yakkala
-GitHub: https://github.com/madhurimayakkala
+### My Chhota School Admissions Landing Page
+
+Built an admissions-focused landing page for a preschool and daycare, designed to improve information accessibility and parent engagement.
+
+## Deployment
+
+Hosted on Vercel.
+
+## Contact
+
+* Email: [yakkalamadhurima@gmail.com](mailto:yakkalamadhurima@gmail.com)
+* LinkedIn: linkedin.com/in/madhurima-yakkala
+* GitHub: github.com/madhurimayakkala
