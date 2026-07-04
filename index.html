@@ -758,7 +758,6 @@ section {
   flex-direction: column;
   gap: 1.1rem;
 }
-.about-meta-item {}
 .about-meta-title {
   font-size: 0.875rem;
   font-weight: 500;
@@ -1076,19 +1075,19 @@ footer {
   <div class="section-label reveal">Projects</div>
   <h2 class="section-title reveal reveal-delay-1">What I've built.</h2>
 
-  <!-- Plantify — flagship dark card -->
+  <!-- Plantify — featured dark card -->
   <div class="project-featured reveal reveal-delay-2" data-href="https://plantify-ecru.vercel.app/" role="link" tabindex="0" aria-label="Plantify — open live demo">
     <div class="project-featured-inner">
-      <div class="project-featured-eyebrow">Flagship Project · Full Stack</div>
+      <div class="project-featured-eyebrow">Full Stack · Production Architecture</div>
       <h3 class="project-featured-title">Plantify</h3>
-      <p class="project-featured-desc">A full-stack habit and goal tracking web application that visualizes productivity through plant growth. Users create an account, start a growth cycle by defining a workload or goal, and nurture a virtual plant by making progress toward completion. Each user's data is securely stored and persisted, allowing them to return to their garden across sessions and devices.</p>
+      <p class="project-featured-desc">A full-stack habit and goal tracking application, evolved from a localStorage prototype into a production-style system with authenticated, per-user data isolation. Clerk handles authentication while Supabase enforces Row Level Security at the database layer, ensuring users can only ever access their own records. Guest mode allows immediate use without an account, with a migration path that transfers guest data into a permanent profile on sign-up.</p>
       <div class="project-featured-features">
-        <div class="project-featured-feature">Secure authentication with Clerk</div>
-        <div class="project-featured-feature">User-specific data management with Supabase</div>
-        <div class="project-featured-feature">Workload lifecycle tracking</div>
-        <div class="project-featured-feature">Progress monitoring &amp; cycle completion</div>
-        <div class="project-featured-feature">Historical garden view of past cycles</div>
-        <div class="project-featured-feature">Calm, motivating interface design</div>
+        <div class="project-featured-feature">Row Level Security for per-user data isolation</div>
+        <div class="project-featured-feature">Guest mode with seamless account migration</div>
+        <div class="project-featured-feature">Optimistic UI updates for instant feedback</div>
+        <div class="project-featured-feature">Schema validation with Zod</div>
+        <div class="project-featured-feature">State logic refactored into reusable custom hooks</div>
+        <div class="project-featured-feature">Unit tests (Vitest) and end-to-end tests (Playwright)</div>
       </div>
       <div class="project-featured-footer">
         <div class="stack-tags">
@@ -1114,7 +1113,7 @@ footer {
   <div class="project-card-title">ResumeScope</div>
 
   <p class="project-card-desc">
-    Resume-to-job match analyzer that compares resumes against job descriptions using deterministic skill extraction, synonym normalization, phrase detection, and weighted scoring. Generates explainable skill-gap analysis and actionable recommendations without relying on AI APIs.
+    Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
   </p>
 
   <div class="stack-tags">
@@ -1141,24 +1140,6 @@ footer {
     </a>
   </div>
 </div>
-
-    <!-- Expense Tracker -->
-    <div class="project-card reveal reveal-delay-2" data-href="https://expense-tracker-mu-steel.vercel.app/" role="link" tabindex="0" aria-label="Expense Tracker — open live demo">
-      <div class="project-card-title">Expense Tracker</div>
-      <p class="project-card-desc">Responsive expense tracking app built in vanilla JS with no frameworks, no backend. Handles transaction logging, categorization, and real-time UI updates through the DOM. A deliberate exercise in knowing what you don't actually need.</p>
-      <div class="stack-tags">
-        <span class="stack-tag">HTML5</span>
-        <span class="stack-tag">CSS3</span>
-        <span class="stack-tag">JavaScript</span>
-      </div>
-      <div class="project-card-footer">
-        <div></div>
-        <a href="https://github.com/madhurimayakkala/Expense-tracker" target="_blank" rel="noopener" class="project-github">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
-      </div>
-    </div>
 
   </div>
 </section>
