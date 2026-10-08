@@ -563,6 +563,16 @@ section {
   transition: color 0.2s;
 }
 .featured-github-link:hover { color: rgba(238,235,218,0.9); }
+.featured-github-link.live { color: rgba(238,235,218,0.85); }
+
+/* Link groups in card footers */
+.featured-links,
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
 
 /* Other project cards */
 .projects-grid {
@@ -639,6 +649,7 @@ section {
   transition: color 0.2s;
 }
 .project-github:hover { color: var(--color-brand); }
+.project-github.live { color: var(--color-brand); }
 
 /* ── SKILLS ── */
 #skills { padding-top: 80px; }
@@ -964,9 +975,9 @@ footer {
   <h2 class="section-title reveal reveal-delay-1">I build things<br>and ship them.</h2>
   <div class="about-grid">
     <div class="about-text reveal reveal-delay-2">
-      <p>I'm a <strong>third-year CS student at RV Institute of Technology</strong>, building full-stack web applications and data-driven tools. I learn by doing & most of what I know came from starting projects and figuring things out along the way.</p>
-      <p>My primary stack is <strong>React, Next.js, TypeScript, Python, and Flask</strong>. I focus on clean architecture and explainable logic, both in how I write code and how I explain the decisions behind it.</p>
-      <p>I've delivered <strong>real client projects</strong>;a preschool admissions landing page and a fitness club site, both live and deployed. I practice DSA consistently in Java, with 150+ problems on LeetCode across arrays, trees, graphs, and recursion.</p>
+      <p>I'm a <strong>third-year CS student at RV Institute of Technology</strong>, building full-stack web applications and data-driven tools. I learn by doing, and most of what I know came from starting projects and figuring things out along the way.</p>
+      <p>My primary stack is <strong>React, Next.js, TypeScript, Supabase, Python, and Flask</strong>. I focus on clean architecture and explainable logic, both in how I write code and how I explain the decisions behind it.</p>
+      <p>I've delivered <strong>real client projects</strong>: a preschool admissions landing page and a fitness club site, both live and deployed. I practice DSA consistently in Java, with 150+ problems on LeetCode across arrays, trees, graphs, and recursion.</p>
       <p>Looking for <strong>software engineering or full-stack internship</strong> opportunities where I can contribute to real products.</p>
     </div>
     <div class="about-sidebar reveal reveal-delay-3">
@@ -978,7 +989,7 @@ footer {
           <div class="stat-label">LeetCode Problems Solved</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">5<sup>+</sup></div>
+          <div class="stat-num">5</div>
           <div class="stat-label">Projects Shipped</div>
         </div>
         <div class="stat-item">
@@ -1112,10 +1123,16 @@ footer {
           <span class="stack-tag-light">Clerk</span>
           <span class="stack-tag-light">Supabase</span>
         </div>
-        <a href="https://github.com/madhurimayakkala/plantify" target="_blank" rel="noopener" class="featured-github-link">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          GitHub
-        </a>
+        <div class="featured-links">
+          <a href="https://plantify-ecru.vercel.app/" target="_blank" rel="noopener" class="featured-github-link live">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live demo
+          </a>
+          <a href="https://github.com/madhurimayakkala/plantify" target="_blank" rel="noopener" class="featured-github-link">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1123,38 +1140,63 @@ footer {
   <!-- Other projects grid -->
   <div class="projects-grid">
 
-   <!-- ResumeScope -->
-<div class="project-card reveal reveal-delay-1" data-href= "https://resume-scope-ten.vercel.app/" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
-  <div class="project-card-title">ResumeScope</div>
+    <!-- ResumeScope -->
+    <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
+      <div class="project-card-title">ResumeScope</div>
 
-  <p class="project-card-desc">
-    Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
-  </p>
+      <p class="project-card-desc">
+        Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
+      </p>
 
-  <div class="stack-tags">
-    <span class="stack-tag">Next.js</span>
-    <span class="stack-tag">TypeScript</span>
-    <span class="stack-tag">React</span>
-    <span class="stack-tag">Tailwind CSS</span>
-    <span class="stack-tag">Text Processing</span>
-  </div>
+      <div class="stack-tags">
+        <span class="stack-tag">Next.js</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">Tailwind CSS</span>
+        <span class="stack-tag">Text Processing</span>
+      </div>
 
-  <div class="project-card-footer">
-    <div></div>
+      <div class="project-card-footer">
+        <div class="project-links">
+          <a href="https://resume-scope-ten.vercel.app/" target="_blank" rel="noopener" class="project-github live">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live demo
+          </a>
+          <a href="https://github.com/madhurimayakkala/resume-scope" target="_blank" rel="noopener" class="project-github">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
 
-    <a href="https://github.com/madhurimayakkala/resume-scope"
-      target="_blank"
-      rel="noopener"
-      class="project-github">
+    <!-- Medico Overseas -->
+    <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" role="link" tabindex="0" aria-label="Medico Overseas — open live site">
+      <div class="project-card-title">Medico Overseas</div>
 
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-      </svg>
+      <p class="project-card-desc">
+        Production website built for the RVIT BuildX hackathon challenge. Dynamic country and exam pages, an enquiry form that writes submissions straight to Google Sheets with reCAPTCHA v3 spam protection, and full SEO with JSON-LD structured data.
+      </p>
 
-      GitHub
-    </a>
-  </div>
-</div>
+      <div class="stack-tags">
+        <span class="stack-tag">Next.js 15</span>
+        <span class="stack-tag">Google Sheets</span>
+        <span class="stack-tag">reCAPTCHA v3</span>
+        <span class="stack-tag">JSON-LD SEO</span>
+        <span class="stack-tag">Vercel</span>
+      </div>
+
+      <div class="project-card-footer">
+        <div class="project-links">
+          <a href="https://medico-overseas.vercel.app/" target="_blank" rel="noopener" class="project-github live">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live site
+          </a>
+        </div>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -1180,6 +1222,7 @@ footer {
         <span class="skill-tag">React</span>
         <span class="skill-tag">Next.js</span>
         <span class="skill-tag">Tailwind CSS</span>
+        <span class="skill-tag">Framer Motion</span>
         <span class="skill-tag">HTML5</span>
         <span class="skill-tag">CSS3</span>
       </div>
@@ -1194,7 +1237,23 @@ footer {
         <span class="skill-tag">OOP</span>
       </div>
     </div>
-    <div class="skill-group reveal reveal-delay-4">
+    <div class="skill-group reveal reveal-delay-1">
+      <div class="skill-group-title">Database &amp; Auth</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Supabase</span>
+        <span class="skill-tag">Row Level Security</span>
+        <span class="skill-tag">Clerk</span>
+        <span class="skill-tag">Zod</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-2">
+      <div class="skill-group-title">Testing</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Vitest</span>
+        <span class="skill-tag">Playwright</span>
+      </div>
+    </div>
+    <div class="skill-group reveal reveal-delay-3">
       <div class="skill-group-title">Tools</div>
       <div class="skill-tags">
         <span class="skill-tag">Git</span>
