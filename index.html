@@ -6,22 +6,25 @@
 <title>Madhurima Yakkala — Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --color-brand: #2D2F5A;
-  --color-brand-hover: #3B3D72;
-  --color-bg: #EEEBDA;
-  --color-surface: #F4F1E8;
-  --color-text-primary: #2B2B2B;
-  --color-text-secondary: #6B6860;
-  --color-text-on-brand: #EEEBDA;
-  --color-border-soft: #D8D4C8;
-  --color-border-strong: #B8B4A8;
+  --color-brand: #6B0B0C;          /* Rosewood: accents, buttons, links */
+  --color-brand-hover: #8A1214;
+  --color-dark: #2D120D;           /* Coffee Bean: dark surfaces */
+  --color-dark-hover: #401C14;
+  --color-bg: #FFF8CA;             /* Lemon Chiffon: page background */
+  --color-surface: #FFFBE0;
+  --color-secondary: #CDE3E8;      /* Botticelli: chips, borders */
+  --color-text-primary: #2D120D;
+  --color-text-secondary: #6A4D44;
+  --color-text-on-brand: #FFF8CA;
+  --color-border-soft: #CDE3E8;
+  --color-border-strong: #9CBFC9;
 
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -183,12 +186,12 @@ section {
   text-decoration: none;
   border-radius: 2px;
   transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px rgba(45,47,90,0.18);
+  box-shadow: 0 2px 12px rgba(107,11,12,0.18);
 }
 .btn-primary:hover {
   background: var(--color-brand-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(45,47,90,0.25);
+  box-shadow: 0 6px 20px rgba(107,11,12,0.25);
 }
 .btn-ghost {
   display: inline-block;
@@ -206,7 +209,7 @@ section {
 }
 .btn-ghost:hover {
   border-color: var(--color-brand);
-  background: rgba(45,47,90,0.05);
+  background: rgba(107,11,12,0.05);
   transform: translateY(-2px);
 }
 
@@ -243,7 +246,7 @@ section {
 
 .hero-name {
   font-family: var(--font-serif);
-  font-size: clamp(4.5rem, 9.5vw, 9rem);
+  font-size: clamp(4rem, 8.5vw, 8rem);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.02em;
@@ -359,7 +362,7 @@ section {
   border-color: var(--color-border-strong);
   border-top-color: var(--color-brand-hover);
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(45,47,90,0.10);
+  box-shadow: 0 8px 32px rgba(107,11,12,0.10);
 }
 .client-card-badge {
   display: inline-flex;
@@ -426,8 +429,8 @@ section {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   color: var(--color-text-secondary);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border-soft);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border-strong);
   border-radius: 2px;
   padding: 0.2rem 0.55rem;
   letter-spacing: 0.06em;
@@ -456,7 +459,7 @@ section {
 [data-href] { cursor: pointer; }
 
 .project-featured {
-  background: var(--color-brand);
+  background: var(--color-dark);
   border-radius: 2px;
   padding: 3rem;
   margin-bottom: 1.5rem;
@@ -470,9 +473,9 @@ section {
   will-change: transform;
 }
 .project-featured:hover {
-  background: var(--color-brand-hover);
+  background: var(--color-dark-hover);
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 16px 48px rgba(45,47,90,0.32);
+  box-shadow: 0 16px 48px rgba(107,11,12,0.32);
 }
 .project-featured-inner { position: relative; z-index: 1; }
 .project-featured-feature {
@@ -490,7 +493,7 @@ section {
 .project-featured-eyebrow {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  color: rgba(238,235,218,0.55);
+  color: rgba(255,248,202,0.55);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
@@ -506,7 +509,7 @@ section {
 }
 .project-featured-desc {
   font-size: 0.95rem;
-  color: rgba(238,235,218,0.72);
+  color: rgba(255,248,202,0.72);
   line-height: 1.9;
   max-width: 600px;
   margin-bottom: 2rem;
@@ -522,14 +525,14 @@ section {
   align-items: baseline;
   gap: 0.55rem;
   font-size: 0.83rem;
-  color: rgba(238,235,218,0.65);
+  color: rgba(255,248,202,0.65);
   line-height: 1.5;
 }
 .project-featured-feature::before {
   content: '→';
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: rgba(238,235,218,0.4);
+  color: rgba(255,248,202,0.4);
   flex-shrink: 0;
 }
 .project-featured-footer {
@@ -539,14 +542,14 @@ section {
   flex-wrap: wrap;
   gap: 1rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(238,235,218,0.12);
+  border-top: 1px solid rgba(255,248,202,0.12);
 }
 .stack-tag-light {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  color: rgba(238,235,218,0.6);
-  background: rgba(238,235,218,0.08);
-  border: 1px solid rgba(238,235,218,0.14);
+  color: rgba(255,248,202,0.6);
+  background: rgba(255,248,202,0.08);
+  border: 1px solid rgba(255,248,202,0.14);
   border-radius: 2px;
   padding: 0.2rem 0.55rem;
   letter-spacing: 0.06em;
@@ -554,7 +557,7 @@ section {
 .featured-github-link {
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  color: rgba(238,235,218,0.5);
+  color: rgba(255,248,202,0.5);
   text-decoration: none;
   letter-spacing: 0.08em;
   display: flex;
@@ -562,8 +565,8 @@ section {
   gap: 0.35rem;
   transition: color 0.2s;
 }
-.featured-github-link:hover { color: rgba(238,235,218,0.9); }
-.featured-github-link.live { color: rgba(238,235,218,0.85); }
+.featured-github-link:hover { color: rgba(255,248,202,0.9); }
+.featured-github-link.live { color: rgba(255,248,202,0.85); }
 
 /* Link groups in card footers */
 .featured-links,
@@ -610,7 +613,7 @@ section {
 .project-card:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-6px) scale(1.015);
-  box-shadow: 0 12px 36px rgba(45,47,90,0.1);
+  box-shadow: 0 12px 36px rgba(107,11,12,0.1);
 }
 .project-card:hover::after { transform: scaleX(1); }
 
@@ -669,7 +672,7 @@ section {
 .skill-group:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(45,47,90,0.06);
+  box-shadow: 0 6px 24px rgba(107,11,12,0.06);
 }
 .skill-group-title {
   font-family: var(--font-mono);
@@ -684,8 +687,8 @@ section {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--color-text-secondary);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border-soft);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border-strong);
   border-radius: 2px;
   padding: 0.28rem 0.65rem;
   letter-spacing: 0.04em;
@@ -756,8 +759,8 @@ section {
   font-family: var(--font-mono);
   font-size: 0.62rem;
   color: var(--color-text-secondary);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border-soft);
+  background: var(--color-secondary);
+  border: 1px solid var(--color-border-strong);
   border-radius: 2px;
   padding: 0.22rem 0.55rem;
   letter-spacing: 0.04em;
@@ -770,7 +773,7 @@ section {
 .about-dsa-note a {
   color: var(--color-brand);
   text-decoration: none;
-  border-bottom: 1px solid rgba(45,47,90,0.22);
+  border-bottom: 1px solid rgba(107,11,12,0.22);
   transition: border-color 0.2s;
 }
 .about-dsa-note a:hover { border-color: var(--color-brand); }
@@ -783,6 +786,7 @@ section {
   flex-direction: column;
   gap: 1.1rem;
 }
+
 .about-meta-item {}
 .about-meta-title {
   font-size: 0.875rem;
@@ -870,7 +874,7 @@ section {
 
 /* ── FOOTER ── */
 footer {
-  background: var(--color-brand);
+  background: var(--color-dark);
   padding: 2rem 4rem;
   display: flex;
   align-items: center;
@@ -881,7 +885,7 @@ footer {
 .footer-copy {
   font-family: var(--font-mono);
   font-size: 0.62rem;
-  color: rgba(238,235,218,0.5);
+  color: rgba(255,248,202,0.5);
   letter-spacing: 0.1em;
 }
 .footer-links {
@@ -891,13 +895,13 @@ footer {
 .footer-links a {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  color: rgba(238,235,218,0.45);
+  color: rgba(255,248,202,0.45);
   text-decoration: none;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: color 0.2s;
 }
-.footer-links a:hover { color: rgba(238,235,218,0.85); }
+.footer-links a:hover { color: rgba(255,248,202,0.85); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
@@ -989,7 +993,7 @@ footer {
           <div class="stat-label">LeetCode Problems Solved</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">5</div>
+          <div class="stat-num">6</div>
           <div class="stat-label">Projects Shipped</div>
         </div>
         <div class="stat-item">
@@ -1198,6 +1202,31 @@ footer {
       </div>
     </div>
 
+    <!-- DevQuiz -->
+    <!-- TODO: add live demo + GitHub links in the footer below, and a data-href on this card -->
+    <div class="project-card reveal reveal-delay-3" role="group" aria-label="DevQuiz">
+      <div class="project-card-title">DevQuiz: What Kind of Dev Are You?</div>
+
+      <p class="project-card-desc">
+        A Buzzfeed-style branching personality quiz for developers. Every answer shifts what you get asked next, with five shared questions and a follow-up that depends on your first pick. Answers are scored across five axes (chaos vs planning, UI love, backend love, community, builds vs only learns) and matched to one of seven dev types, plus a secret result that only unlocks if both your UI and backend scores run high.
+      </p>
+
+      <div class="stack-tags">
+        <span class="stack-tag">Next.js</span>
+        <span class="stack-tag">Flask</span>
+        <span class="stack-tag">REST APIs</span>
+        <span class="stack-tag">Scoring Logic</span>
+      </div>
+
+      <div class="project-card-footer">
+        <div class="project-links">
+          <!-- <a href="LIVE_URL" target="_blank" rel="noopener" class="project-github live">Live demo</a> -->
+          <!-- <a href="GITHUB_URL" target="_blank" rel="noopener" class="project-github">GitHub</a> -->
+          <span class="project-github">Weekend build · Oct 2026</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1398,13 +1427,13 @@ footer {
       navLinks.style.position = 'absolute';
       navLinks.style.top = '100%';
       navLinks.style.right = '1.5rem';
-      navLinks.style.background = 'rgba(238,235,218,0.97)';
+      navLinks.style.background = 'rgba(255,248,202,0.97)';
       navLinks.style.padding = '1.25rem 1.75rem';
       navLinks.style.gap = '1.25rem';
       navLinks.style.border = '1px solid var(--color-border-soft)';
       navLinks.style.borderRadius = '2px';
       navLinks.style.backdropFilter = 'blur(12px)';
-      navLinks.style.boxShadow = '0 8px 32px rgba(45,47,90,0.10)';
+      navLinks.style.boxShadow = '0 8px 32px rgba(107,11,12,0.10)';
     } else {
       navLinks.style.display = 'none';
     }
