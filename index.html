@@ -62,7 +62,7 @@ nav {
   transition: background 0.35s, border-bottom 0.35s, backdrop-filter 0.35s;
 }
 nav.scrolled {
-  background: rgba(238, 235, 218, 0.92);
+  background: rgba(255, 248, 202, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border-soft);
@@ -392,8 +392,8 @@ section {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   line-height: 1.85;
-  margin-bottom: 1.5rem;
 }
+.client-card .glass-zone { margin-bottom: 1.5rem; }
 .client-card-features {
   margin-bottom: 1.75rem;
   display: flex;
@@ -511,6 +511,8 @@ section {
   font-size: 0.95rem;
   color: rgba(255,248,202,0.72);
   line-height: 1.9;
+}
+.project-featured .glass-zone {
   max-width: 600px;
   margin-bottom: 2rem;
 }
@@ -653,6 +655,147 @@ section {
 }
 .project-github:hover { color: var(--color-brand); }
 .project-github.live { color: var(--color-brand); }
+
+/* ── GLASS OVERLAY ──────────────────────────────────────────────
+   Frosted layer over the description only; title, stack tags and links
+   stay visible. The description fades back underneath so no blurred
+   text bleeds through (that bleed is what made the first pass muddy).
+   • Light cards: Lemon Chiffon → Botticelli glass, Coffee Bean text,
+     Rosewood accents (rule, labels, arrows, CTA)
+   • Dark featured card: Lemon-tinted glass on Coffee Bean, Lemon text,
+     Lemon CTA with Rosewood text
+   • Hover (fine pointer) and :focus-within reveal it; touch devices
+     get an inline strip by default
+──────────────────────────────────────────────────────────────── */
+.glass-zone { position: relative; min-height: 9.75rem; }
+.glass-zone > p { transition: opacity 0.35s ease, filter 0.35s ease; }
+
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 1.25rem;
+  border-radius: 2px;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, rgba(255, 251, 224, 0.86) 0%, rgba(205, 227, 232, 0.78) 100%);
+  border: 1px solid rgba(156, 191, 201, 0.75);
+  border-left: 3px solid var(--color-brand);
+  box-shadow: 0 10px 30px rgba(107, 11, 12, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(1.25);
+  backdrop-filter: blur(16px) saturate(1.25);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-overlay { background: #E9F0DA; }
+  .project-featured .glass-overlay { background: #401C14; }
+}
+
+.glass-label {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+.glass-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+.glass-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+.glass-list li::before {
+  content: '→';
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+.glass-cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.1rem;
+  padding: 0.42rem 0.9rem;
+  background: var(--color-brand);
+  color: var(--color-text-on-brand);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Dark featured card */
+.project-featured .glass-overlay {
+  color: var(--color-text-on-brand);
+  background: linear-gradient(135deg, rgba(255, 248, 202, 0.13) 0%, rgba(205, 227, 232, 0.07) 100%);
+  border: 1px solid rgba(205, 227, 232, 0.28);
+  border-left: 3px solid var(--color-secondary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 248, 202, 0.12);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+.project-featured .glass-label { color: var(--color-secondary); }
+.project-featured .glass-list li { color: var(--color-text-on-brand); }
+.project-featured .glass-list li::before { color: var(--color-secondary); }
+.project-featured .glass-cta {
+  background: var(--color-bg);
+  color: var(--color-brand);
+}
+
+/* Reveal: hover + keyboard focus (fine pointers) */
+@media (hover: hover) and (pointer: fine) {
+  [data-href]:hover .glass-overlay,
+  [data-href]:focus-within .glass-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  [data-href]:hover .glass-zone > p,
+  [data-href]:focus-within .glass-zone > p {
+    opacity: 0.12;
+    filter: blur(2px);
+  }
+}
+
+[data-href]:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 4px;
+}
+
+/* Touch / no-hover: inline strip, shown by default, nothing hidden */
+@media (hover: none), (pointer: coarse) {
+  .glass-zone { min-height: 0; }
+  .glass-overlay {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    margin-top: 0.9rem;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(205, 227, 232, 0.4);
+  }
+  .project-featured .glass-overlay { background: rgba(255, 248, 202, 0.07); }
+  .glass-cta { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-overlay, .glass-zone > p { transition: opacity 0.01s; transform: none; }
+}
 
 /* ── SKILLS ── */
 #skills { padding-top: 80px; }
@@ -1047,7 +1190,18 @@ footer {
     <div class="client-card reveal reveal-delay-2" data-href="https://mychhotaschool-madinaguda.vercel.app/" role="link" tabindex="0" aria-label="My Chhota School Admissions Landing Page">
       <div class="client-card-badge">Live · Client Project</div>
       <div class="client-card-title">My Chhota School Admissions Landing Page</div>
-      <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus — with no friction.</p>
+      <div class="glass-zone">
+        <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus — with no friction.</p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>Built end to end: design, code, deploy</li>
+            <li>One-tap WhatsApp inquiry for parents</li>
+            <li>Live for real users on Vercel</li>
+          </ul>
+          <span class="glass-cta">Visit live site ↗</span>
+        </div>
+      </div>
       <div class="client-card-features">
         <div class="client-feature">Admissions-focused page structure</div>
         <div class="client-feature">Responsive across all screen sizes</div>
@@ -1075,7 +1229,18 @@ footer {
     <div class="client-card reveal reveal-delay-3" data-href="https://benz-fitness-club.vercel.app/" role="link" tabindex="0" aria-label="Benz Fitness Club Landing Page">
       <div class="client-card-badge">Live · Client Project</div>
       <div class="client-card-title">Benz Fitness Club Landing Page</div>
-      <p class="client-card-desc">Built a landing page for a local fitness club aimed at converting visitors into members. Focused on presenting the club's offerings clearly and making it easy for prospective members to get in touch.</p>
+      <div class="glass-zone">
+        <p class="client-card-desc">Built a landing page for a local fitness club aimed at converting visitors into members. Focused on presenting the club's offerings clearly and making it easy for prospective members to get in touch.</p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>Conversion-first layout for a local club</li>
+            <li>Services, membership and contact in view</li>
+            <li>Mobile-ready and live on Vercel</li>
+          </ul>
+          <span class="glass-cta">Visit live site ↗</span>
+        </div>
+      </div>
       <div class="client-card-features">
         <div class="client-feature">Conversion-focused layout</div>
         <div class="client-feature">Services and membership overview</div>
@@ -1110,7 +1275,18 @@ footer {
     <div class="project-featured-inner">
       <div class="project-featured-eyebrow">Full Stack · Production Architecture</div>
       <h3 class="project-featured-title">Plantify</h3>
-      <p class="project-featured-desc">A full-stack habit and goal tracking application, evolved from a localStorage prototype into a production-style system with authenticated, per-user data isolation. Clerk handles authentication while Supabase enforces Row Level Security at the database layer, ensuring users can only ever access their own records. Guest mode allows immediate use without an account, with a migration path that transfers guest data into a permanent profile on sign-up.</p>
+      <div class="glass-zone">
+        <p class="project-featured-desc">A full-stack habit and goal tracking application, evolved from a localStorage prototype into a production-style system with authenticated, per-user data isolation. Clerk handles authentication while Supabase enforces Row Level Security at the database layer, ensuring users can only ever access their own records. Guest mode allows immediate use without an account, with a migration path that transfers guest data into a permanent profile on sign-up.</p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>Per-user isolation enforced in the database with RLS</li>
+            <li>Guest data migrates into an account on sign-up</li>
+            <li>Vitest unit tests plus Playwright end-to-end coverage</li>
+          </ul>
+          <span class="glass-cta">Open live demo ↗</span>
+        </div>
+      </div>
       <div class="project-featured-features">
         <div class="project-featured-feature">Row Level Security for per-user data isolation</div>
         <div class="project-featured-feature">Guest mode with seamless account migration</div>
@@ -1148,9 +1324,20 @@ footer {
     <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
       <div class="project-card-title">ResumeScope</div>
 
-      <p class="project-card-desc">
-        Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
-      </p>
+      <div class="glass-zone">
+        <p class="project-card-desc">
+          Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
+        </p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>7-stage deterministic pipeline, no AI API</li>
+            <li>150+ skill taxonomy with synonym handling</li>
+            <li>Sample data flow, no resume needed</li>
+          </ul>
+          <span class="glass-cta">Open live demo ↗</span>
+        </div>
+      </div>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js</span>
@@ -1180,9 +1367,20 @@ footer {
     <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" role="link" tabindex="0" aria-label="Medico Overseas — open live site">
       <div class="project-card-title">Medico Overseas</div>
 
-      <p class="project-card-desc">
-        Production website built for the RVIT BuildX hackathon challenge. Dynamic country and exam pages, an enquiry form that writes submissions straight to Google Sheets with reCAPTCHA v3 spam protection, and full SEO with JSON-LD structured data.
-      </p>
+      <div class="glass-zone">
+        <p class="project-card-desc">
+          Production website built for the RVIT BuildX hackathon challenge. Dynamic country and exam pages, an enquiry form that writes submissions straight to Google Sheets with reCAPTCHA v3 spam protection, and full SEO with JSON-LD structured data.
+        </p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>Dynamic country and exam pages</li>
+            <li>Enquiries land straight in Google Sheets</li>
+            <li>reCAPTCHA v3 plus JSON-LD SEO</li>
+          </ul>
+          <span class="glass-cta">Open live site ↗</span>
+        </div>
+      </div>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js 15</span>
@@ -1206,9 +1404,20 @@ footer {
     <div class="project-card reveal reveal-delay-3" data-href="https://devquiz-xi.vercel.app/" role="link" tabindex="0" aria-label="DevQuiz - open live demo">
       <div class="project-card-title">DevQuiz: What Kind of Dev Are You?</div>
 
-      <p class="project-card-desc">
-        A Buzzfeed-style branching personality quiz for developers. Every answer shifts what you get asked next, with five shared questions and a follow-up that depends on your first pick. Answers are scored across five axes (chaos vs planning, UI love, backend love, community, builds vs only learns) and matched to one of seven dev types, plus a secret result that only unlocks if both your UI and backend scores run high.
-      </p>
+      <div class="glass-zone">
+        <p class="project-card-desc">
+          A Buzzfeed-style branching personality quiz for developers. Every answer shifts what you get asked next, with five shared questions and a follow-up that depends on your first pick. Answers are scored across five axes (chaos vs planning, UI love, backend love, community, builds vs only learns) and matched to one of seven dev types, plus a secret result that only unlocks if both your UI and backend scores run high.
+        </p>
+        <div class="glass-overlay" aria-hidden="true">
+          <div class="glass-label">Highlights</div>
+          <ul class="glass-list">
+            <li>Branching questions, scored on five axes</li>
+            <li>Seven dev types plus one secret result</li>
+            <li>Next.js front end, Flask API behind it</li>
+          </ul>
+          <span class="glass-cta">Open live demo ↗</span>
+        </div>
+      </div>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js</span>
@@ -1388,6 +1597,7 @@ footer {
       if (url && url !== '#') window.open(url, '_blank', 'noopener');
     });
     card.addEventListener('keydown', e => {
+      if (e.target !== card) return; // only when the card itself is focused, not inner links
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         const url = card.dataset.href;
@@ -1397,6 +1607,8 @@ footer {
   });
 
   // TILT ON HOVER — subtle 3D tilt for cards, mouse-tracked (desktop only)
+  // Note: no `transform-style: preserve-3d` here. It flattens/breaks
+  // backdrop-filter on child elements, which would kill the glass overlay.
   const tiltEls = document.querySelectorAll('.project-card, .project-featured, .client-card');
   const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (supportsHover) {
@@ -1415,7 +1627,6 @@ footer {
         if (frame) cancelAnimationFrame(frame);
         el.style.transform = '';
       });
-      el.style.transformStyle = 'preserve-3d';
     });
   }
 
