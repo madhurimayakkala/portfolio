@@ -62,7 +62,7 @@ nav {
   transition: background 0.35s, border-bottom 0.35s, backdrop-filter 0.35s;
 }
 nav.scrolled {
-  background: rgba(255, 248, 202, 0.92);
+  background: rgba(238, 235, 218, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border-soft);
@@ -392,8 +392,8 @@ section {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
   line-height: 1.85;
+  margin-bottom: 1.5rem;
 }
-.client-card .glass-zone { margin-bottom: 1.5rem; }
 .client-card-features {
   margin-bottom: 1.75rem;
   display: flex;
@@ -511,8 +511,6 @@ section {
   font-size: 0.95rem;
   color: rgba(255,248,202,0.72);
   line-height: 1.9;
-}
-.project-featured .glass-zone {
   max-width: 600px;
   margin-bottom: 2rem;
 }
@@ -611,6 +609,7 @@ section {
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  z-index: 2;
 }
 .project-card:hover {
   border-color: var(--color-border-strong);
@@ -656,145 +655,129 @@ section {
 .project-github:hover { color: var(--color-brand); }
 .project-github.live { color: var(--color-brand); }
 
-/* ── GLASS OVERLAY ──────────────────────────────────────────────
-   Frosted layer over the description only; title, stack tags and links
-   stay visible. The description fades back underneath so no blurred
-   text bleeds through (that bleed is what made the first pass muddy).
-   • Light cards: Lemon Chiffon → Botticelli glass, Coffee Bean text,
-     Rosewood accents (rule, labels, arrows, CTA)
-   • Dark featured card: Lemon-tinted glass on Coffee Bean, Lemon text,
-     Lemon CTA with Rosewood text
-   • Hover (fine pointer) and :focus-within reveal it; touch devices
-     get an inline strip by default
-──────────────────────────────────────────────────────────────── */
-.glass-zone { position: relative; min-height: 9.75rem; }
-.glass-zone > p { transition: opacity 0.35s ease, filter 0.35s ease; }
+/* ── HOVER DETAILS (glass panel) ── */
+.client-card { overflow: hidden; }
 
-.glass-overlay {
+/* featured card: let the footer rise above the glass */
+.project-featured-inner { z-index: auto; }
+
+.client-card-footer,
+.project-card-footer,
+.project-featured-footer {
+  position: relative;
+  z-index: 3;
+}
+
+.card-hint {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.project-featured .card-hint { color: rgba(255,248,202,0.5); }
+
+.card-glass {
   position: absolute;
   inset: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.7rem;
-  padding: 1rem 1.25rem;
-  border-radius: 2px;
-  color: var(--color-text-primary);
-  background: linear-gradient(135deg, rgba(255, 251, 224, 0.86) 0%, rgba(205, 227, 232, 0.78) 100%);
-  border: 1px solid rgba(156, 191, 201, 0.75);
-  border-left: 3px solid var(--color-brand);
-  box-shadow: 0 10px 30px rgba(107, 11, 12, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.55);
-  -webkit-backdrop-filter: blur(16px) saturate(1.25);
-  backdrop-filter: blur(16px) saturate(1.25);
+  gap: 1.1rem;
+  padding: 2.25rem 2.25rem 5.5rem;
+  background: rgba(255,251,224,0.97);
   opacity: 0;
-  transform: translateY(8px);
+  transition: opacity 0.3s ease;
   pointer-events: none;
-  transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1), transform 0.45s cubic-bezier(0.22,1,0.36,1);
 }
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .glass-overlay { background: #E9F0DA; }
-  .project-featured .glass-overlay { background: #401C14; }
+.project-featured .card-glass {
+  background: rgba(45,18,13,0.97);
+  padding: 3rem 3rem 6.5rem;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .card-glass {
+    background: rgba(255,251,224,0.93);
+    -webkit-backdrop-filter: blur(14px) saturate(1.1);
+    backdrop-filter: blur(14px) saturate(1.1);
+  }
+  .project-featured .card-glass { background: rgba(45,18,13,0.94); }
 }
 
-.glass-label {
-  font-family: var(--font-mono);
-  font-size: 0.56rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-brand);
-}
-.glass-list { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
-.glass-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--color-text-primary);
-}
-.glass-list li::before {
-  content: '→';
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  color: var(--color-brand);
-  flex-shrink: 0;
-}
-.glass-cta {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.1rem;
-  padding: 0.42rem 0.9rem;
-  background: var(--color-brand);
-  color: var(--color-text-on-brand);
-  border-radius: 2px;
+[data-href]:hover .card-glass,
+[data-href]:focus-within .card-glass { opacity: 1; }
+
+.glass-eyebrow {
   font-family: var(--font-mono);
   font-size: 0.58rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--color-text-secondary);
 }
-
-/* Dark featured card */
-.project-featured .glass-overlay {
-  color: var(--color-text-on-brand);
-  background: linear-gradient(135deg, rgba(255, 248, 202, 0.13) 0%, rgba(205, 227, 232, 0.07) 100%);
-  border: 1px solid rgba(205, 227, 232, 0.28);
-  border-left: 3px solid var(--color-secondary);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 248, 202, 0.12);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  backdrop-filter: blur(16px) saturate(1.2);
+/* always-visible "browser bar" so the panel is never empty */
+.glass-site {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 2px;
+  background: rgba(205,227,232,0.45);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
 }
-.project-featured .glass-label { color: var(--color-secondary); }
-.project-featured .glass-list li { color: var(--color-text-on-brand); }
-.project-featured .glass-list li::before { color: var(--color-secondary); }
-.project-featured .glass-cta {
-  background: var(--color-bg);
+.glass-site-dots { display: flex; gap: 4px; flex-shrink: 0; }
+.glass-site-dots i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+.glass-site-url {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* optional screenshot, only added if the image file actually loads */
+.glass-thumb {
+  width: 100%;
+  height: 120px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 2px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.glass-row-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--color-brand);
+  margin-bottom: 0.2rem;
 }
-
-/* Reveal: hover + keyboard focus (fine pointers) */
-@media (hover: hover) and (pointer: fine) {
-  [data-href]:hover .glass-overlay,
-  [data-href]:focus-within .glass-overlay {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  [data-href]:hover .glass-zone > p,
-  [data-href]:focus-within .glass-zone > p {
-    opacity: 0.12;
-    filter: blur(2px);
-  }
+.glass-row-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
 }
-
-[data-href]:focus-visible {
-  outline: 2px solid var(--color-brand);
-  outline-offset: 4px;
-}
-
-/* Touch / no-hover: inline strip, shown by default, nothing hidden */
-@media (hover: none), (pointer: coarse) {
-  .glass-zone { min-height: 0; }
-  .glass-overlay {
-    position: static;
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    margin-top: 0.9rem;
-    box-shadow: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-    background: rgba(205, 227, 232, 0.4);
-  }
-  .project-featured .glass-overlay { background: rgba(255, 248, 202, 0.07); }
-  .glass-cta { display: none; }
-}
+.project-featured .glass-eyebrow { color: rgba(255,248,202,0.55); }
+.project-featured .glass-site { border-color: rgba(255,248,202,0.18); background: rgba(255,248,202,0.06); color: var(--color-text-on-brand); }
+.project-featured .glass-site-dots i { background: rgba(255,248,202,0.3); }
+.project-featured .glass-thumb { border-color: rgba(255,248,202,0.18); }
+.project-featured .glass-row-label { color: rgba(255,248,202,0.6); }
+.project-featured .glass-row-text { color: var(--color-text-on-brand); }
 
 @media (prefers-reduced-motion: reduce) {
-  .glass-overlay, .glass-zone > p { transition: opacity 0.01s; transform: none; }
+  .card-glass { transition: none; }
 }
 
 /* ── SKILLS ── */
@@ -1187,21 +1170,10 @@ footer {
   <div class="client-work-grid">
 
     <!-- My Chhota School -->
-    <div class="client-card reveal reveal-delay-2" data-href="https://mychhotaschool-madinaguda.vercel.app/" role="link" tabindex="0" aria-label="My Chhota School Admissions Landing Page">
+    <div class="client-card reveal reveal-delay-2" data-href="https://mychhotaschool-madinaguda.vercel.app/" data-hardest="Making the admissions path obvious to parents in just a few taps." data-next="An enquiry form that stores leads, not just WhatsApp." data-preview="previews/my-chhota-school.png" role="link" tabindex="0" aria-label="My Chhota School Admissions Landing Page">
       <div class="client-card-badge">Live · Client Project</div>
       <div class="client-card-title">My Chhota School Admissions Landing Page</div>
-      <div class="glass-zone">
-        <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus — with no friction.</p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>Built end to end: design, code, deploy</li>
-            <li>One-tap WhatsApp inquiry for parents</li>
-            <li>Live for real users on Vercel</li>
-          </ul>
-          <span class="glass-cta">Visit live site ↗</span>
-        </div>
-      </div>
+      <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus — with no friction.</p>
       <div class="client-card-features">
         <div class="client-feature">Admissions-focused page structure</div>
         <div class="client-feature">Responsive across all screen sizes</div>
@@ -1226,21 +1198,10 @@ footer {
     </div>
 
     <!-- Benz Fitness -->
-    <div class="client-card reveal reveal-delay-3" data-href="https://benz-fitness-club.vercel.app/" role="link" tabindex="0" aria-label="Benz Fitness Club Landing Page">
+    <div class="client-card reveal reveal-delay-3" data-href="https://benz-fitness-club.vercel.app/" data-hardest="Keeping the layout conversion-focused without feeling pushy." data-next="A class schedule section members can actually use." data-preview="previews/benz-fitness.png" role="link" tabindex="0" aria-label="Benz Fitness Club Landing Page">
       <div class="client-card-badge">Live · Client Project</div>
       <div class="client-card-title">Benz Fitness Club Landing Page</div>
-      <div class="glass-zone">
-        <p class="client-card-desc">Built a landing page for a local fitness club aimed at converting visitors into members. Focused on presenting the club's offerings clearly and making it easy for prospective members to get in touch.</p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>Conversion-first layout for a local club</li>
-            <li>Services, membership and contact in view</li>
-            <li>Mobile-ready and live on Vercel</li>
-          </ul>
-          <span class="glass-cta">Visit live site ↗</span>
-        </div>
-      </div>
+      <p class="client-card-desc">Built a landing page for a local fitness club aimed at converting visitors into members. Focused on presenting the club's offerings clearly and making it easy for prospective members to get in touch.</p>
       <div class="client-card-features">
         <div class="client-feature">Conversion-focused layout</div>
         <div class="client-feature">Services and membership overview</div>
@@ -1271,22 +1232,11 @@ footer {
   <h2 class="section-title reveal reveal-delay-1">What I've built.</h2>
 
   <!-- Plantify — featured dark card -->
-  <div class="project-featured reveal reveal-delay-2" data-href="https://plantify-ecru.vercel.app/" role="link" tabindex="0" aria-label="Plantify — open live demo">
+  <div class="project-featured reveal reveal-delay-2" data-href="https://plantify-ecru.vercel.app/" data-hardest="Moving guest data into a real account on sign-up without losing or duplicating anything." data-next="Streak insights and reminders." data-preview="previews/plantify.png" role="link" tabindex="0" aria-label="Plantify — open live demo">
     <div class="project-featured-inner">
       <div class="project-featured-eyebrow">Full Stack · Production Architecture</div>
       <h3 class="project-featured-title">Plantify</h3>
-      <div class="glass-zone">
-        <p class="project-featured-desc">A full-stack habit and goal tracking application, evolved from a localStorage prototype into a production-style system with authenticated, per-user data isolation. Clerk handles authentication while Supabase enforces Row Level Security at the database layer, ensuring users can only ever access their own records. Guest mode allows immediate use without an account, with a migration path that transfers guest data into a permanent profile on sign-up.</p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>Per-user isolation enforced in the database with RLS</li>
-            <li>Guest data migrates into an account on sign-up</li>
-            <li>Vitest unit tests plus Playwright end-to-end coverage</li>
-          </ul>
-          <span class="glass-cta">Open live demo ↗</span>
-        </div>
-      </div>
+      <p class="project-featured-desc">A full-stack habit and goal tracking application, evolved from a localStorage prototype into a production-style system with authenticated, per-user data isolation. Clerk handles authentication while Supabase enforces Row Level Security at the database layer, ensuring users can only ever access their own records. Guest mode allows immediate use without an account, with a migration path that transfers guest data into a permanent profile on sign-up.</p>
       <div class="project-featured-features">
         <div class="project-featured-feature">Row Level Security for per-user data isolation</div>
         <div class="project-featured-feature">Guest mode with seamless account migration</div>
@@ -1321,23 +1271,12 @@ footer {
   <div class="projects-grid">
 
     <!-- ResumeScope -->
-    <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
+    <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" data-hardest="Getting synonym and phrase matching accurate without leaning on an AI call." data-next="A bigger skills taxonomy beyond the current 150+." data-preview="previews/resumescope.png" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
       <div class="project-card-title">ResumeScope</div>
 
-      <div class="glass-zone">
-        <p class="project-card-desc">
-          Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
-        </p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>7-stage deterministic pipeline, no AI API</li>
-            <li>150+ skill taxonomy with synonym handling</li>
-            <li>Sample data flow, no resume needed</li>
-          </ul>
-          <span class="glass-cta">Open live demo ↗</span>
-        </div>
-      </div>
+      <p class="project-card-desc">
+        Resume-to-job match analyzer built around a deterministic 7-stage matching pipeline rather than an AI API call, giving fully explainable, reproducible scores. Parses resumes against a curated taxonomy of 150+ technical skills, then applies synonym normalization and phrase detection before weighted scoring. Results render in a Command Center layout, with drag-and-drop upload, inline validation, and a sample data flow for evaluating the pipeline without a resume on hand.
+      </p>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js</span>
@@ -1364,23 +1303,12 @@ footer {
     </div>
 
     <!-- Medico Overseas -->
-    <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" role="link" tabindex="0" aria-label="Medico Overseas — open live site">
+    <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" data-hardest="Shipping a full production site against a hackathon deadline." data-next="An admin view for the enquiries." data-preview="previews/medico-overseas.png" role="link" tabindex="0" aria-label="Medico Overseas — open live site">
       <div class="project-card-title">Medico Overseas</div>
 
-      <div class="glass-zone">
-        <p class="project-card-desc">
-          Production website built for the RVIT BuildX hackathon challenge. Dynamic country and exam pages, an enquiry form that writes submissions straight to Google Sheets with reCAPTCHA v3 spam protection, and full SEO with JSON-LD structured data.
-        </p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>Dynamic country and exam pages</li>
-            <li>Enquiries land straight in Google Sheets</li>
-            <li>reCAPTCHA v3 plus JSON-LD SEO</li>
-          </ul>
-          <span class="glass-cta">Open live site ↗</span>
-        </div>
-      </div>
+      <p class="project-card-desc">
+        Production website built for the RVIT BuildX hackathon challenge. Dynamic country and exam pages, an enquiry form that writes submissions straight to Google Sheets with reCAPTCHA v3 spam protection, and full SEO with JSON-LD structured data.
+      </p>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js 15</span>
@@ -1401,23 +1329,12 @@ footer {
     </div>
 
     <!-- DevQuiz -->
-    <div class="project-card reveal reveal-delay-3" data-href="https://devquiz-xi.vercel.app/" role="link" tabindex="0" aria-label="DevQuiz - open live demo">
+    <div class="project-card reveal reveal-delay-3" data-href="https://devquiz-xi.vercel.app/" data-hardest="Balancing five scoring axes so every dev type is actually reachable." data-next="More questions and Dynamic question paths." data-preview="previews/devquiz.png" role="link" tabindex="0" aria-label="DevQuiz - open live demo">
       <div class="project-card-title">DevQuiz: What Kind of Dev Are You?</div>
 
-      <div class="glass-zone">
-        <p class="project-card-desc">
-          A Buzzfeed-style branching personality quiz for developers. Every answer shifts what you get asked next, with five shared questions and a follow-up that depends on your first pick. Answers are scored across five axes (chaos vs planning, UI love, backend love, community, builds vs only learns) and matched to one of seven dev types, plus a secret result that only unlocks if both your UI and backend scores run high.
-        </p>
-        <div class="glass-overlay" aria-hidden="true">
-          <div class="glass-label">Highlights</div>
-          <ul class="glass-list">
-            <li>Branching questions, scored on five axes</li>
-            <li>Seven dev types plus one secret result</li>
-            <li>Next.js front end, Flask API behind it</li>
-          </ul>
-          <span class="glass-cta">Open live demo ↗</span>
-        </div>
-      </div>
+      <p class="project-card-desc">
+        A Buzzfeed-style branching personality quiz for developers. Every answer shifts what you get asked next, with five shared questions and a follow-up that depends on your first pick. Answers are scored across five axes (chaos vs planning, UI love, backend love, community, builds vs only learns) and matched to one of seven dev types, plus a secret result that only unlocks if both your UI and backend scores run high.
+      </p>
 
       <div class="stack-tags">
         <span class="stack-tag">Next.js</span>
@@ -1597,7 +1514,7 @@ footer {
       if (url && url !== '#') window.open(url, '_blank', 'noopener');
     });
     card.addEventListener('keydown', e => {
-      if (e.target !== card) return; // only when the card itself is focused, not inner links
+      if (e.target !== card) return; // inner links handle their own keys
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         const url = card.dataset.href;
@@ -1607,11 +1524,10 @@ footer {
   });
 
   // TILT ON HOVER — subtle 3D tilt for cards, mouse-tracked (desktop only)
-  // Note: no `transform-style: preserve-3d` here. It flattens/breaks
-  // backdrop-filter on child elements, which would kill the glass overlay.
   const tiltEls = document.querySelectorAll('.project-card, .project-featured, .client-card');
   const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (supportsHover) {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (supportsHover && !reduceMotion) {
     tiltEls.forEach(el => {
       let frame = null;
       el.addEventListener('mousemove', e => {
@@ -1627,6 +1543,7 @@ footer {
         if (frame) cancelAnimationFrame(frame);
         el.style.transform = '';
       });
+      el.style.transformStyle = 'preserve-3d';
     });
   }
 
@@ -1661,6 +1578,72 @@ footer {
       }
     });
   });
+
+  // HOVER DETAILS: glass panel with extra info (desktop only, so mobile layout stays untouched)
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (canHover) {
+    document.querySelectorAll('[data-href]').forEach(card => {
+      const url = card.dataset.href;
+      const hardest = card.dataset.hardest;
+      const next = card.dataset.next;
+      if (!url || url === '#' || !hardest) return;
+
+      const hint = document.createElement('span');
+      hint.className = 'card-hint';
+      hint.setAttribute('aria-hidden', 'true');
+      hint.textContent = 'Hover for details';
+      card.appendChild(hint);
+
+      const glass = document.createElement('div');
+      glass.className = 'card-glass';
+      glass.setAttribute('aria-hidden', 'true');
+
+      const eyebrow = document.createElement('div');
+      eyebrow.className = 'glass-eyebrow';
+      eyebrow.textContent = 'Behind the build';
+
+      let host = url;
+      try { host = new URL(url).host; } catch (_) {}
+      const site = document.createElement('div');
+      site.className = 'glass-site';
+      const dots = document.createElement('span');
+      dots.className = 'glass-site-dots';
+      dots.innerHTML = '<i></i><i></i><i></i>';
+      const hostEl = document.createElement('span');
+      hostEl.className = 'glass-site-url';
+      hostEl.textContent = host;
+      site.append(dots, hostEl);
+
+      const row = (label, text) => {
+        const wrap = document.createElement('div');
+        const l = document.createElement('div');
+        l.className = 'glass-row-label';
+        l.textContent = label;
+        const t = document.createElement('div');
+        t.className = 'glass-row-text';
+        t.textContent = text;
+        wrap.append(l, t);
+        return wrap;
+      };
+
+      glass.append(eyebrow, site, row('Hardest part', hardest));
+      if (next) glass.append(row('Next up', next));
+      card.appendChild(glass);
+
+      // optional screenshot: only shows up if the local image exists and loads
+      const preview = card.dataset.preview;
+      if (preview) {
+        const img = new Image();
+        img.onload = () => {
+          const thumb = document.createElement('div');
+          thumb.className = 'glass-thumb';
+          thumb.style.backgroundImage = `url("${preview}")`;
+          site.after(thumb);
+        };
+        img.src = preview;
+      }
+    });
+  }
 </script>
 </body>
 </html>
