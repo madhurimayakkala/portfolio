@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Madhurima Yakkala — Software Engineer</title>
+<title>Madhurima Yakkala | Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -62,7 +62,7 @@ nav {
   transition: background 0.35s, border-bottom 0.35s, backdrop-filter 0.35s;
 }
 nav.scrolled {
-  background: rgba(238, 235, 218, 0.92);
+  background: rgba(255, 248, 202, 0.9);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border-soft);
@@ -673,11 +673,11 @@ section {
   top: 0.9rem;
   right: 1rem;
   font-family: var(--font-mono);
-  font-size: 0.55rem;
+  font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
-  opacity: 0.6;
+  opacity: 0.85;
   pointer-events: none;
 }
 .project-featured .card-hint { color: rgba(255,248,202,0.5); }
@@ -691,26 +691,19 @@ section {
   justify-content: center;
   gap: 1.1rem;
   padding: 2.25rem 2.25rem 5.5rem;
-  background: rgba(255,251,224,0.97);
+  background: rgba(255,251,224,0.98);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.25s ease;
   pointer-events: none;
 }
 .project-featured .card-glass {
-  background: rgba(45,18,13,0.97);
+  background: rgba(45,18,13,0.98);
   padding: 3rem 3rem 6.5rem;
 }
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  .card-glass {
-    background: rgba(255,251,224,0.93);
-    -webkit-backdrop-filter: blur(14px) saturate(1.1);
-    backdrop-filter: blur(14px) saturate(1.1);
-  }
-  .project-featured .card-glass { background: rgba(45,18,13,0.94); }
-}
 
+/* short delay so a cursor just passing over a card doesn't flash the panel */
 [data-href]:hover .card-glass,
-[data-href]:focus-within .card-glass { opacity: 1; }
+[data-href]:focus-within .card-glass { opacity: 1; transition-delay: 0.3s; }
 
 .glass-eyebrow {
   font-family: var(--font-mono);
@@ -749,7 +742,8 @@ section {
 /* optional screenshot, only added if the image file actually loads */
 .glass-thumb {
   width: 100%;
-  height: 120px;
+  flex: 1;
+  min-height: 150px;
   border: 1px solid var(--color-border-strong);
   border-radius: 2px;
   background-size: cover;
@@ -779,6 +773,33 @@ section {
 @media (prefers-reduced-motion: reduce) {
   .card-glass { transition: none; }
 }
+
+/* ── ALWAYS-VISIBLE BUILD NOTES (all devices) ── */
+.card-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 1.1rem;
+  margin-bottom: 1.5rem;
+  border-top: 1px dashed var(--color-border-strong);
+}
+.project-card .card-notes { margin-bottom: 0; }
+.card-note-label {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+  margin-bottom: 0.15rem;
+}
+.card-note-text {
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.project-featured .card-notes { border-top-color: rgba(255,248,202,0.18); }
+.project-featured .card-note-label { color: rgba(255,248,202,0.6); }
+.project-featured .card-note-text { color: rgba(255,248,202,0.72); }
 
 /* ── SKILLS ── */
 #skills { padding-top: 80px; }
@@ -1173,7 +1194,7 @@ footer {
     <div class="client-card reveal reveal-delay-2" data-href="https://mychhotaschool-madinaguda.vercel.app/" data-hardest="Making the admissions path obvious to parents in just a few taps." data-next="An enquiry form that stores leads, not just WhatsApp." data-preview="previews/my-chhota-school.png" role="link" tabindex="0" aria-label="My Chhota School Admissions Landing Page">
       <div class="client-card-badge">Live · Client Project</div>
       <div class="client-card-title">My Chhota School Admissions Landing Page</div>
-      <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus — with no friction.</p>
+      <p class="client-card-desc">Designed and developed a complete admissions-focused landing page for a preschool. The brief: help prospective parents understand the school, contact the team, and find the campus, with no friction.</p>
       <div class="client-card-features">
         <div class="client-feature">Admissions-focused page structure</div>
         <div class="client-feature">Responsive across all screen sizes</div>
@@ -1232,7 +1253,7 @@ footer {
   <h2 class="section-title reveal reveal-delay-1">What I've built.</h2>
 
   <!-- Plantify — featured dark card -->
-  <div class="project-featured reveal reveal-delay-2" data-href="https://plantify-ecru.vercel.app/" data-hardest="Moving guest data into a real account on sign-up without losing or duplicating anything." data-next="Streak insights and reminders." data-preview="previews/plantify.png" role="link" tabindex="0" aria-label="Plantify — open live demo">
+  <div class="project-featured reveal reveal-delay-2" data-href="https://plantify-ecru.vercel.app/" data-hardest="Moving guest data into a real account on sign-up without losing or duplicating anything." data-next="Streak insights and reminders." data-preview="previews/plantify.png" role="link" tabindex="0" aria-label="Plantify: open live demo">
     <div class="project-featured-inner">
       <div class="project-featured-eyebrow">Full Stack · Production Architecture</div>
       <h3 class="project-featured-title">Plantify</h3>
@@ -1271,7 +1292,7 @@ footer {
   <div class="projects-grid">
 
     <!-- ResumeScope -->
-    <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" data-hardest="Getting synonym and phrase matching accurate without leaning on an AI call." data-next="A bigger skills taxonomy beyond the current 150+." data-preview="previews/resumescope.png" role="link" tabindex="0" aria-label="ResumeScope — open live demo">
+    <div class="project-card reveal reveal-delay-1" data-href="https://resume-scope-ten.vercel.app/" data-hardest="Getting synonym and phrase matching accurate without leaning on an AI call." data-next="A bigger skills taxonomy beyond the current 150+." data-preview="previews/resumescope.png" role="link" tabindex="0" aria-label="ResumeScope: open live demo">
       <div class="project-card-title">ResumeScope</div>
 
       <p class="project-card-desc">
@@ -1303,7 +1324,7 @@ footer {
     </div>
 
     <!-- Medico Overseas -->
-    <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" data-hardest="Shipping a full production site against a hackathon deadline." data-next="An admin view for the enquiries." data-preview="previews/medico-overseas.png" role="link" tabindex="0" aria-label="Medico Overseas — open live site">
+    <div class="project-card reveal reveal-delay-2" data-href="https://medico-overseas.vercel.app/" data-hardest="Shipping a full production site against a hackathon deadline." data-next="An admin view for the enquiries." data-preview="previews/medico-overseas.png" role="link" tabindex="0" aria-label="Medico Overseas: open live site">
       <div class="project-card-title">Medico Overseas</div>
 
       <p class="project-card-desc">
@@ -1579,69 +1600,76 @@ footer {
     });
   });
 
-  // HOVER DETAILS: glass panel with extra info (desktop only, so mobile layout stays untouched)
+  // CARD NOTES: "Hardest part" / "Next up" shown on every device
+  document.querySelectorAll('[data-href]').forEach(card => {
+    const hardest = card.dataset.hardest;
+    const next = card.dataset.next;
+    if (!hardest) return;
+
+    const noteRow = (label, text) => {
+      const wrap = document.createElement('div');
+      const l = document.createElement('div');
+      l.className = 'card-note-label';
+      l.textContent = label;
+      const t = document.createElement('div');
+      t.className = 'card-note-text';
+      t.textContent = text;
+      wrap.append(l, t);
+      return wrap;
+    };
+
+    const notes = document.createElement('div');
+    notes.className = 'card-notes';
+    notes.append(noteRow('Hardest part', hardest));
+    if (next) notes.append(noteRow('Next up', next));
+
+    const footer = card.querySelector('.client-card-footer, .project-card-footer, .project-featured-footer');
+    if (footer) footer.parentNode.insertBefore(notes, footer);
+  });
+
+  // HOVER PREVIEW: desktop only, and only for cards whose screenshot actually exists
   const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (canHover) {
     document.querySelectorAll('[data-href]').forEach(card => {
       const url = card.dataset.href;
-      const hardest = card.dataset.hardest;
-      const next = card.dataset.next;
-      if (!url || url === '#' || !hardest) return;
-
-      const hint = document.createElement('span');
-      hint.className = 'card-hint';
-      hint.setAttribute('aria-hidden', 'true');
-      hint.textContent = 'Hover for details';
-      card.appendChild(hint);
-
-      const glass = document.createElement('div');
-      glass.className = 'card-glass';
-      glass.setAttribute('aria-hidden', 'true');
-
-      const eyebrow = document.createElement('div');
-      eyebrow.className = 'glass-eyebrow';
-      eyebrow.textContent = 'Behind the build';
-
-      let host = url;
-      try { host = new URL(url).host; } catch (_) {}
-      const site = document.createElement('div');
-      site.className = 'glass-site';
-      const dots = document.createElement('span');
-      dots.className = 'glass-site-dots';
-      dots.innerHTML = '<i></i><i></i><i></i>';
-      const hostEl = document.createElement('span');
-      hostEl.className = 'glass-site-url';
-      hostEl.textContent = host;
-      site.append(dots, hostEl);
-
-      const row = (label, text) => {
-        const wrap = document.createElement('div');
-        const l = document.createElement('div');
-        l.className = 'glass-row-label';
-        l.textContent = label;
-        const t = document.createElement('div');
-        t.className = 'glass-row-text';
-        t.textContent = text;
-        wrap.append(l, t);
-        return wrap;
-      };
-
-      glass.append(eyebrow, site, row('Hardest part', hardest));
-      if (next) glass.append(row('Next up', next));
-      card.appendChild(glass);
-
-      // optional screenshot: only shows up if the local image exists and loads
       const preview = card.dataset.preview;
-      if (preview) {
-        const img = new Image();
-        img.onload = () => {
-          const thumb = document.createElement('div');
-          thumb.className = 'glass-thumb';
-          thumb.style.backgroundImage = `url("${preview}")`;
-          site.after(thumb);
-        };
-        img.src = preview;
-      }
+      if (!url || url === '#' || !preview) return;
+
+      const img = new Image();
+      img.onload = () => {
+        const hint = document.createElement('span');
+        hint.className = 'card-hint';
+        hint.setAttribute('aria-hidden', 'true');
+        hint.textContent = 'Hover for preview';
+
+        const glass = document.createElement('div');
+        glass.className = 'card-glass';
+        glass.setAttribute('aria-hidden', 'true');
+
+        const eyebrow = document.createElement('div');
+        eyebrow.className = 'glass-eyebrow';
+        eyebrow.textContent = 'Live preview';
+
+        let host = url;
+        try { host = new URL(url).host; } catch (_) {}
+        const site = document.createElement('div');
+        site.className = 'glass-site';
+        const dots = document.createElement('span');
+        dots.className = 'glass-site-dots';
+        dots.innerHTML = '<i></i><i></i><i></i>';
+        const hostEl = document.createElement('span');
+        hostEl.className = 'glass-site-url';
+        hostEl.textContent = host;
+        site.append(dots, hostEl);
+
+        const thumb = document.createElement('div');
+        thumb.className = 'glass-thumb';
+        thumb.style.backgroundImage = 'url("' + preview + '")';
+
+        glass.append(eyebrow, site, thumb);
+        card.append(hint, glass);
+      };
+      img.src = preview;
     });
   }
 </script>
